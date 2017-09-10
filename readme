@@ -1,0 +1,44 @@
+tools
+1.kinect
+2.moter with encoder
+3.arduino mega2560
+4.imu for arduino
+5.batterry
+6.labtop with ubuntu14.04 and ros-indigo
+7.wheel
+8.body
+--------------------------------------------------------
+install
+freenect
+depthimage to laserscan
+serial_python
+amcl
+navigation
+gmapping
+mapsever
+robot stage publisher
+static_transform_publisher
+
+**robot_spect must same in gyro.ino and src floder
+**make urdf suit for your robot (urdf/my_personal_robotic_companion.urdf)
+**tf suit for your robot (patrick_config.launch>>static_transform_publisher)
+**check topic /gyro /rpm can fix it base_controller.cpp>>callback 
+----------------------------------------------------------------
+1.make map
+roslaunch my_personal_robotic_companion slam.launch
+
+2.save map
+roscd my_personal_robotic_companion/maps/
+rosrun map_server map_saver -f map
+
+3.navigation 
+roslaunch my_personal_robotic_companion navi.launch
+-------------------------------------------------------------
+if permition deny /dev/ttyACM0 >> sudo chmod 666 /dev/ttyACM0
+rosrun rqt_graph rqt_graph
+rostopic list
+rostopic echo /rpm
+
+
+
+

@@ -1,0 +1,21 @@
+<launch>
+
+	<arg name="/camera/rgb/image_color" value="input_rgb_image"/>
+	<arg name="/camera/depth/image" value="input_depth_image"/>
+
+	<include file="$(find freenect_launch)/launch/freenect.launch"/>
+ 	
+
+
+
+	
+
+
+
+
+
+
+
+
+
+</launch>

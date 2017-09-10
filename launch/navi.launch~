@@ -1,0 +1,27 @@
+<launch>
+    <include file="$(find my_personal_robotic_companion)/launch/patrick_urdf.launch"/>
+ 
+   
+
+    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find my_personal_robotic_companion)/launch/rviz/amcl.rviz"/>
+
+
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find my_personal_robotic_companion)/maps/map.yaml" />
+
+    <include file="$(find amcl)/examples/amcl_diff.launch" />
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find my_personal_robotic_companion)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/move_base_params.yaml" command="load" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find my_personal_robotic_companion)/param/navfn_global_planner_params.yaml" command="load" />
+    </node>
+	
+
+
+
+</launch>
